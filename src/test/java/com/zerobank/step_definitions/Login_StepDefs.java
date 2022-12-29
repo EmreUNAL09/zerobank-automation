@@ -1,6 +1,7 @@
 package com.zerobank.step_definitions;
 
 import com.zerobank.pages.LoginPage;
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -23,11 +24,20 @@ public class Login_StepDefs {
         loginPage.login_mtd(username,password);
     }
     
+//    @Then("Verify with {string}")
+//    public void verify_with(String expectedText) {
+//        String actualMessage = loginPage.accountSummary_loc.getText();
+//        //String actualMessage = loginPage.menuName_mtd();
+//        Assert.assertEquals("Account Summary is NOT visible",expectedText,actualMessage);
+//    }
+
     @Then("Verify with {string}")
-    public void verify_with(String expectedText) {
+    public void verify_with(String headerText) {
+//        Driver.get().findElement(By.xpath("//a[text()='"+headerText+"']")).click();
+        BrowserUtils.waitFor(1);
         String actualMessage = loginPage.accountSummary_loc.getText();
-        //String actualMessage = loginPage.menuName_mtd();
-        Assert.assertEquals("Account Summary is NOT visible",expectedText,actualMessage);
+        BrowserUtils.waitFor(1);
+        Assert.assertEquals("Header is NOT visible",headerText,actualMessage);
     }
 
     @When("The user enters {string} and {string} credential")

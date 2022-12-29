@@ -1,4 +1,4 @@
-@wip
+
 Feature: Account Summary
 
   Background:

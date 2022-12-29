@@ -13,14 +13,16 @@ public abstract class BasePage {
 
     @FindBy(id = "account_summary_tab")
     public WebElement accountSummary_loc;
+//
+//    @FindBy(id = "account_activity_tab")
+//    public WebElement accountActivity_loc;
+//
+//    @FindBy(id = "pay_bills_tab")
+//    public WebElement payBills_loc;
 
-    @FindBy(id = "account_activity_tab")
-    public WebElement accountActivity_loc;
-
-    @FindBy(id = "pay_bills_tab")
-    public WebElement payBills_loc;
-
-    public String menuSelectName_mtd(String menuName){
-        return Driver.get().findElement(By.xpath("//li[@id='"+menuName+"']")).getText();
+    public void menuSelectName_mtd(String menuName){
+        Driver.get().findElement(By.xpath("//a[text()='"+menuName+"']")).click();
     }
+    //        return Driver.get().findElement(By.xpath("//a[text()='"+menuName+"']")).getText();
+
 }
