@@ -24,10 +24,17 @@ public class AccountActivity_StepDefs {
         accountActivity.sortBtn_mtd(sortType);
     }
 
-    @And("The account menu should also contain the following {string}")
-    public void theAccountMenuShouldAlsoContainTheFollowing(String options) {
-        accountActivity.sortBtn_mtd(options);
+//    @And("The account menu should also contain the following {string}")
+//    public void theAccountMenuShouldAlsoContainTheFollowing(String options) {
+//        accountActivity.sortBtn_mtd(options);
+//    }
+
+    @And("The user should be able to see following options in the account box")
+    public void theUserShouldBeAbleToSeeFollowingOptionsInTheAccountBox(List<String> expectedOptions) {
+        accountActivity.sortBtnList_mtd(expectedOptions);
+
     }
+
 
 //    @And("The account menu should also contain the following options")
 //    public void theAccountMenuShouldAlsoContainTheFollowingOptions(List<String> expectedList) {
@@ -38,9 +45,8 @@ public class AccountActivity_StepDefs {
 
     @Then("The user should be able to see {string} with {int}")
     public void the_user_should_be_able_to_see_with(String expectedTransactionTable, int locNumber) {
-        String actualTransactionTableName = accountActivity.transactionTable_mtd(locNumber);
-        System.out.println("actualName = " + actualTransactionTableName);
-        Assert.assertEquals("Transaction table name is NOT match",expectedTransactionTable,actualTransactionTableName);
+        accountActivity.transactionsTable_mtd(locNumber, expectedTransactionTable);
+
     }
 
 
